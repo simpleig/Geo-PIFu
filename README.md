@@ -36,7 +36,14 @@ We provide a conda `yaml` environment file.
 
 ## Dataset ##
 
-Download the `DeepHuman` dataset from [here](https://github.com/ZhengZerong/DeepHuman/tree/master/THUmanDataset). The data should be a zip file about 30.5 G.
+Download the `DeepHuman` mesh dataset from [here](https://github.com/ZhengZerong/DeepHuman/tree/master/THUmanDataset) and move it into your preferred data folder. The downloaded data should be a zip file about 30.5 G.
+
+	mv DeepHumanDataset.zip data/DeepHumanDataset/
+
+Download the `LSUN` background image dataset. Unzip the files and parse lmdb into jpeg images.
+
+	cd data/LSUN
+	python3 Geo-PIFu/LSUN/download.py
 
 ## Acknowledgements
 
