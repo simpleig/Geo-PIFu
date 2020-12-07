@@ -34,6 +34,10 @@ We provide a conda `yaml` environment file.
 	conda env create -f geopifu_requirements.yaml
 	conda activate geopifu
 
+## Dataset ##
+
+Download the `DeepHuman` dataset from [here](https://github.com/ZhengZerong/DeepHuman/tree/master/THUmanDataset).
+
 ## Acknowledgements
 
 This repository is built on: [DeepHuman](https://github.com/ZhengZerong/DeepHuman) and [PIFu](https://github.com/shunsukesaito/PIFu). Thank the authors for sharing their code!
