@@ -36,7 +36,7 @@ We provide a conda `yaml` environment file.
 
 ## Dataset ##
 
-Download the `DeepHuman` dataset from [here](https://github.com/ZhengZerong/DeepHuman/tree/master/THUmanDataset).
+Download the `DeepHuman` dataset from [here](https://github.com/ZhengZerong/DeepHuman/tree/master/THUmanDataset). The data should be a zip file about 30.5 G.
 
 ## Acknowledgements
 
