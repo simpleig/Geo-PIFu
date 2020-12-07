@@ -1,11 +1,9 @@
 # Geo-PIFu: Geometry and Pixel Aligned Implicit Functions for Single-view Human Reconstruction
 
-This repository is the official implementation of Geo-PIFu: Geometry and Pixel Aligned Implicit Functions for Single-view Human Reconstruction.
+This repository is the official implementation of [Geo-PIFu: Geometry and Pixel Aligned Implicit Functions for Single-view Human Reconstruction](https://papers.nips.cc/paper/2020/file/690f44c8c2b7ded579d01abe8fdb6110-Paper.pdf).
 <p align="center">
 <img src="https://github.com/simpleig/Geo-PIFu/blob/master/assests/pipeline.png" width="750">
 </p>
-
-## Reference
 
 If you find this code useful, please consider citing
 ```
