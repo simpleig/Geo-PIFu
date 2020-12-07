@@ -31,11 +31,6 @@ Development log
 
 We provide a conda environment with all the dependencies.
 
-```
-conda env create -f geopifu_requirements.yaml
-conda activate geopifu
-```
-
 	conda env create -f geopifu_requirements.yaml
 	conda activate geopifu
 
