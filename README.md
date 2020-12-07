@@ -4,9 +4,6 @@ This repository is the official implementation of Geo-PIFu: Geometry and Pixel A
 <p align="center">
 <img src="https://github.com/simpleig/Geo-PIFu/blob/master/assests/pipeline.png" width="750">
 </p>
-> [**Geo-PIFu: Geometry and Pixel Aligned Implicit Functions for Single-view Human Reconstruction**](https://papers.nips.cc/paper/2020/file/690f44c8c2b7ded579d01abe8fdb6110-Paper.pdf)  
-> Tong He, John Collomosse, Hailin Jin, Stefano Soatto
-> Conference on Neural Information Processing Systems (NeurIPS), 2020
 
 ## Reference
 
@@ -20,6 +17,6 @@ If you find this code useful, please consider citing
 }
 ```
 
-## Acknowledgements ##
+## Acknowledgements
 
 This repository is built on: [DeepHuman](https://github.com/ZhengZerong/DeepHuman) and [PIFu](https://github.com/shunsukesaito/PIFu). Thank the authors for sharing their code!
