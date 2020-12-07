@@ -1,6 +1,6 @@
 # Geo-PIFu: Geometry and Pixel Aligned Implicit Functions for Single-view Human Reconstruction
 
-This repository is the official implementation of [Geo-PIFu: Geometry and Pixel Aligned Implicit Functions for Single-view Human Reconstruction](https://papers.nips.cc/paper/2020/file/690f44c8c2b7ded579d01abe8fdb6110-Paper.pdf), NeurIPS, 2020.
+This repository is the official PyTorch implementation of [Geo-PIFu: Geometry and Pixel Aligned Implicit Functions for Single-view Human Reconstruction](https://papers.nips.cc/paper/2020/file/690f44c8c2b7ded579d01abe8fdb6110-Paper.pdf), NeurIPS, 2020.
 <p align="center">
 <img src="https://github.com/simpleig/Geo-PIFu/blob/master/assests/pipeline.png" width="750">
 </p>
@@ -26,6 +26,18 @@ Development log
   - [ ] Test `Geo-PIFu` on the DeepHuman test dataset
 - Evaulation
   - [ ] Compute 4 metrics: CD, PSD, Normal Cosine, Normal L2
+
+## Requirements
+
+We provide a conda environment with all the dependencies.
+
+```
+conda env create -f geopifu_requirements.yaml
+conda activate geopifu
+```
+
+	conda env create -f geopifu_requirements.yaml
+	conda activate geopifu
 
 ## Acknowledgements
 
