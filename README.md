@@ -16,15 +16,15 @@ If you find this code useful, please consider citing
 ```
 
 Development log
-- [ ] Data preparation
+- Data preparation
   - [ ] DeepHuman dataset rendering
-- [ ] Training
+- Training
   - [ ] Train `PIFu` on the DeepHuman training dataset
   - [ ] Train `Geo-PIFu` on the DeepHuman training dataset
-- [ ] Test
+- Test
   - [ ] Test `PIFu` on the DeepHuman test dataset
   - [ ] Test `Geo-PIFu` on the DeepHuman test dataset
-- [ ] Evaulation
+- Evaulation
   - [ ] Compute 4 metrics: CD, PSD, Normal Cosine, Normal L2
 
 ## Acknowledgements
