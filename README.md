@@ -29,7 +29,7 @@ Development log
 
 ## Requirements
 
-We provide a conda environment with all the dependencies.
+We provide a conda `yaml` environment file.
 
 	conda env create -f geopifu_requirements.yaml
 	conda activate geopifu
