@@ -38,16 +38,26 @@ We provide a conda `yaml` environment file.
 	conda env create -f geopifu_requirements.yaml
 	conda activate geopifu
 
-## Dataset ##
+## Dataset
 
 Download the `DeepHuman` mesh dataset from [here](https://github.com/ZhengZerong/DeepHuman/tree/master/THUmanDataset) and move it into your preferred data folder. The downloaded data should be a zip file about 30.5 G.
 
 	mv DeepHumanDataset.zip data/DeepHumanDataset/
 
-Download the `LSUN` background image dataset. Unzip the files and parse lmdb into jpeg images.
+Download the `LSUN` background image dataset and unzip the `zip` files.
 
 	cd data/LSUN
 	python3 Geo-PIFu/LSUN/download.py
+	unzip "*.zip"
+
+Parse the `lmdb` files into jpeg images.
+
+	python Geo-PIFu/LSUN/data.py export ./*_val_lmdb --out_dir ./val_jpg --imageType jpg
+	python Geo-PIFu/LSUN/data.py export ./*_train_lmdb --out_dir ./train_jpg --imageType jpg --limit 30000
+
+## Human Mesh Rendering
+
+	python render_mesh.py
 
 ## Acknowledgements
 

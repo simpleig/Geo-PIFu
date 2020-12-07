@@ -67,7 +67,7 @@ def export_images(db_path, out_dir, flat=False, limit=-1, imageType='jpg'):
 
                 img = cv2.imdecode(numpy.fromstring(val, dtype=numpy.uint8), 1)
 
-                image_out_path = join(image_out_dir, key + '.jpg')
+                image_out_path = join(image_out_dir, str(key) + '.jpg')
                 cv2.imwrite(image_out_path,img)
 
             else:
