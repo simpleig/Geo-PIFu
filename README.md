@@ -16,6 +16,9 @@ If you find this code useful, please consider citing
 ```
 
 Development log
+- Environment configuration
+  - [x] For `Geo-PIFu` and `PIFu` training, test and evaluation
+  - [ ] For `DeepHuman` data rendering
 - Data preparation
   - [x] DeepHuman and LSUN datasets setup
   - [ ] Clothed human mesh rendering
