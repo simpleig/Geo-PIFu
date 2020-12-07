@@ -17,7 +17,8 @@ If you find this code useful, please consider citing
 
 Development log
 - Data preparation
-  - [ ] DeepHuman dataset rendering
+  - [x] DeepHuman and LSUN datasets setup
+  - [ ] Clothed human mesh rendering
 - Training
   - [ ] Train `PIFu` on the DeepHuman training dataset
   - [ ] Train `Geo-PIFu` on the DeepHuman training dataset
