@@ -92,7 +92,7 @@ Instead of rendering the data on your own, we suggest using the provided `config
 
 	# download the saved rendering configuration files
 
-We provide a demo script of parsing these recorded rendering settings. You might need to make a few modifications in `render_mesh.py` in order to fully re-render our data for fair experiments. As an alternative, we want to directly provide a download link of our rendered data. But this requires some agreements with the `DeepHuman` dataset authors. We are working it.
+We provide a demo script of parsing these recorded rendering settings. You might need to make a few modifications in `render_mesh.py` in order to fully re-render our data for fair experiment comparisons. As an alternative, we want to directly provide a download link of our rendered data. But this requires some agreements with the `DeepHuman` dataset authors. We are working on it.
 
     python render_mesh.py --meshDirSearch ${PREFERRED_DATA_FOLDER}/data --bgDirSearch ${PREFERRED_DATA_FOLDER}/data --saveDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resolutionScale 4 --useConfig --addionalType smplSemVoxels --splitNum 30 --splitIdx 0
     python render_mesh.py --meshDirSearch ${PREFERRED_DATA_FOLDER}/data --bgDirSearch ${PREFERRED_DATA_FOLDER}/data --saveDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resolutionScale 4 --useConfig --addionalType smplSemVoxels --splitNum 30 --splitIdx 1
