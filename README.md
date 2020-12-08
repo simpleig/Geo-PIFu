@@ -50,7 +50,7 @@ Download the `DeepHuman` mesh dataset from [here](https://github.com/ZhengZerong
 
 	mv DeepHumanDataset.zip data/DeepHumanDataset/
 	cd data/DeepHumanDataset
-	unzip DeepHumanDataset.zip
+	unzip DeepHumanDataset.zip # plz visit https://github.com/ZhengZerong/DeepHuman/tree/master/THUmanDataset for password
 
 Download the `LSUN` background image dataset and unzip the `zip` files.
 
@@ -87,6 +87,16 @@ You can specify `splitNum` and `splitIdx` (e.g. {0, ..., `splitNum`-1}) in order
 	python render_mesh.py --meshDirSearch ${PREFERRED_DATA_FOLDER}/data --bgDirSearch ${PREFERRED_DATA_FOLDER}/data --saveDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resolutionScale 4 --splitNum 30 --splitIdx 0
 	python render_mesh.py --meshDirSearch ${PREFERRED_DATA_FOLDER}/data --bgDirSearch ${PREFERRED_DATA_FOLDER}/data --saveDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resolutionScale 4 --splitNum 30 --splitIdx 1
 	...
+
+Instead of rendering the data on your own, we suggest using the provided `config` files in order to obtain the same set of images used in our work `Geo-PIFu`. For each rendered image, we recorded its rendering settings like camera angles, lighting directions and so on.
+
+	# download the saved rendering configuration files
+
+We provide a demo script of parsing these recorded rendering settings. You might need to make a few modifications in `render_mesh.py` in order to fully re-render our data for fair experiments. As an alternative, we want to directly provide a download link of our rendered data. But this requires some agreements with the `DeepHuman` dataset authors. We are working it.
+
+    python render_mesh.py --meshDirSearch ${PREFERRED_DATA_FOLDER}/data --bgDirSearch ${PREFERRED_DATA_FOLDER}/data --saveDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resolutionScale 4 --useConfig --addionalType smplSemVoxels --splitNum 30 --splitIdx 0
+    python render_mesh.py --meshDirSearch ${PREFERRED_DATA_FOLDER}/data --bgDirSearch ${PREFERRED_DATA_FOLDER}/data --saveDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resolutionScale 4 --useConfig --addionalType smplSemVoxels --splitNum 30 --splitIdx 1
+    ...
 
 ## 4. Acknowledgements
 
