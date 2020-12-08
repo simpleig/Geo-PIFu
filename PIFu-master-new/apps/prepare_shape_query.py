@@ -189,7 +189,7 @@ def main(args):
             meshPathTmp = dataConfig["meshPath"]
             if SENSEI_DATA_DIR in meshPathTmp:
                 backward_offset = 3 + len(args.datasetDir.split('/')[-2]) + len(args.datasetDir.split('/')[-1])
-                meshPathTmp.replace(SENSEI_DATA_DIR, args.datasetDir[:-backward_offset])
+                meshPathTmp = meshPathTmp.replace(SENSEI_DATA_DIR, args.datasetDir[:-backward_offset])
             print("\n\n\nNewwwwww path...")
             pdb.set_trace()
             assert(os.path.exists(meshPathTmp))
