@@ -10,8 +10,10 @@ conda install -c anaconda scikit-image
 conda install -c anaconda scipy
 pip install pip==9.0.3
 pip install matplotlib==2.2.4
-pip install opendr==0.77
-pip install openmesh # make sure "import cv2" and "import numpy as np" work
+pip install opendr==0.77 # make sure "import opendr" works
+pip install openmesh
+pip uninstall numpy
+pip install numpy # make sure "import cv2" and "import numpy as np" work
 pip install tensorflow-gpu==1.14 # plz check assert(tf.__version__ == "1.14.0")
 pip install --upgrade pip
 pip install nvidia-ml-py==10.418.84
