@@ -21,7 +21,7 @@ Development log
   - [x] For `DeepHuman` data rendering using `opendr`
 - Data preparation
   - [x] DeepHuman and LSUN datasets setup
-  - [ ] Clothed human mesh rendering
+  - [x] Clothed human mesh rendering
 - Training
   - [ ] Train `PIFu` on the DeepHuman training dataset
   - [ ] Train `Geo-PIFu` on the DeepHuman training dataset
