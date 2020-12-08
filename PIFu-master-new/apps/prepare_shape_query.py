@@ -186,12 +186,12 @@ def main(args):
 
         # only when it's a different mesh: load a mesh
         if dataConfig["meshPath"] != previousMeshPath:
-            print("\n\n\npath...")
-            pdb.set_trace()
             meshPathTmp = dataConfig["meshPath"]
             if SENSEI_DATA_DIR in meshPathTmp:
-                backward_offset = 2 + len(args.datasetDir.split('/')[-2]) + len(args.datasetDir.split('/')[-1])
+                backward_offset = 3 + len(args.datasetDir.split('/')[-2]) + len(args.datasetDir.split('/')[-1])
                 meshPathTmp.replace(SENSEI_DATA_DIR, args.datasetDir[:-backward_offset])
+            print("\n\n\nNewwwwww path...")
+            pdb.set_trace()
             assert(os.path.exists(meshPathTmp))
             mesh   = trimesh.load(meshPathTmp)
             meshVN = copy.deepcopy(mesh.vertex_normals) 
