@@ -33,14 +33,14 @@ Development log
 
 ## 1. Requirements
 
-We provide a conda `yaml` environment file (you can modify `prefix` to change installation location). This conda env. is for `Geo-PIFu` and `PIFu` training, test and evaluation.
+We provide a conda `yml` environment file (you can modify `prefix` to change installation location). This conda env. is for `Geo-PIFu` and `PIFu` training, test and evaluation.
 
-	conda env create -f geopifu_requirements.yaml
+	conda env create -f geopifu_requirements.yml
 	conda activate geopifu
 
-We use `opendr` for mesh rendering. To accomodate its package requirements, we provide another conda `yaml` environment file.
+We use `opendr` for mesh rendering. To accomodate its package requirements, we provide another conda `yml` environment file.
 
-	conda env create -f opendr_requirements.yaml
+	conda env create -f opendr_requirements.yml
 	conda activate opendrEnv # plz make sure this works
 	conda deactivate         # back to the geopifu env.
 
