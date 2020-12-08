@@ -103,7 +103,7 @@ We provide a demo script of parsing these recorded `json` rendering setting file
 
 Prepare and save shape training query samples offline, because `--online_sampling` of `train_shape_iccv.py` is slow due to mesh reading, point sampling, ray tracing, etc. This query points offline sampling process only need to be done once. The sampled / saved query points can be used for both `PIFu` and `Geo-PIFu` training.
 
-You can specify `splitNum` and `splitIdx` (e.g. {0, ..., `splitNum`-1}) in order to split the full data and launch multiple sampling scripts in parallel. For example, with 32 splits the whole sampling process will take about 4 hrs and generate 146.5 G query points in total: saved at {./occu_sigma3.5_pts5k_split32_00, ..., ./occu_sigma3.5_pts5k_split32_31}. We want to directly provide a download link of our sampled query points. But this requires some agreements with the `DeepHuman` dataset authors. We are working on it.
+You can specify `splitNum` and `splitIdx` (e.g. {0, ..., `splitNum`-1}) in order to split the full data and launch multiple sampling scripts in parallel. For example, with 32 splits the whole sampling process will take about 4 hrs and generate 146.5 G query points in total: saved at {`./occu_sigma3.5_pts5k_split32_00`, ..., `./occu_sigma3.5_pts5k_split32_31`}. We want to directly provide a download link of our sampled query points. But this requires some agreements with the `DeepHuman` dataset authors. We are working on it.
 
 	python -m apps.prepare_shape_query
 
