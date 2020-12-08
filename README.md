@@ -23,6 +23,7 @@ Development log
   - [x] DeepHuman and LSUN datasets setup
   - [x] Clothed human mesh rendering and voxelization
 - Training
+  - [ ] Mesh query points offline sampling for fast and controled training
   - [ ] Train `PIFu` on the DeepHuman training dataset
   - [ ] Train `Geo-PIFu` on the DeepHuman training dataset
 - Test
@@ -92,12 +93,16 @@ Instead of rendering the data on your own, we suggest using [the provided `confi
 
 	unzip config_split_001_000.zip -d data/humanRender/config/ # should expect to see 108718 json files
 
-We provide a demo script of parsing these recorded `json` rendering setting files. You might need to make a few modifications in `render_mesh.py` in order to fully re-render our data for fair experiment comparisons. As an alternative, we want to directly provide a download link of our rendered data. But this requires some agreements with the `DeepHuman` dataset authors. We are working on it.
+We provide a demo script of parsing these recorded `json` rendering setting files. You might need to make a few simple modifications in `render_mesh.py` in order to properly launch the script and fully re-render our data for fair experiment comparisons. As an alternative, we want to directly provide a download link of our rendered data. But this requires some agreements with the `DeepHuman` dataset authors. We are working on it.
 
     python render_mesh.py --meshDirSearch ${PREFERRED_DATA_FOLDER}/data --bgDirSearch ${PREFERRED_DATA_FOLDER}/data --saveDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resolutionScale 4 --useConfig --addionalType smplSemVoxels --splitNum 30 --splitIdx 0
     python render_mesh.py --meshDirSearch ${PREFERRED_DATA_FOLDER}/data --bgDirSearch ${PREFERRED_DATA_FOLDER}/data --saveDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resolutionScale 4 --useConfig --addionalType smplSemVoxels --splitNum 30 --splitIdx 1
     ...
 
-## 4. Acknowledgements
+## 4. Query Points Offline Sampling
+
+Prepare and save shape training query samples offline, because `--online_sampling` of `train_shape_iccv.py` is slow due to mesh reading, point sampling, ray tracing, etc. This query points offline sampling process only need to be done once. The sampled / saved query points can be used for both `PIFu` and `Geo-PIFu` training.
+
+## 5. Acknowledgements
 
 This repository is built on: [DeepHuman](https://github.com/ZhengZerong/DeepHuman) and [PIFu](https://github.com/shunsukesaito/PIFu). Thank the authors for sharing their code!
