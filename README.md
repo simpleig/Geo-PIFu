@@ -110,7 +110,9 @@ Prepare and save shape training query samples offline, because `--online_samplin
 
 You can specify `splitNum` and `splitIdx` (e.g. {0, ..., `splitNum`-1}) in order to split the full data and launch multiple sampling scripts in parallel. For example, with 32 splits the whole sampling process will take about 4 hrs and generate 146.5 G query points in total: saved at {`./occu_sigma3.5_pts5k_split32_00`, ..., `./occu_sigma3.5_pts5k_split32_31`}. We want to directly provide a download link of our sampled query points. But this requires some agreements with the `DeepHuman` dataset authors. We are working on it.
 
-	python -m apps.prepare_shape_query
+	python -m apps.prepare_shape_query --sampleType occu_sigma3.5_pts5k --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --epoch_range 0 15 --sigma 3.5 --num_sample_inout 5000 --num_sample_color 0 --splitNum 32 --splitIdx 0
+    python -m apps.prepare_shape_query --sampleType occu_sigma3.5_pts5k --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --epoch_range 0 15 --sigma 3.5 --num_sample_inout 5000 --num_sample_color 0 --splitNum 32 --splitIdx 1
+    ...
 
 ## 5. Acknowledgements
 
