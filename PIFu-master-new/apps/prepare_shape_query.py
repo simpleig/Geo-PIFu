@@ -47,7 +47,7 @@ def get_training_test_indices(args, shuffle):
     # sanity check for args.totalNumFrame
     assert(os.path.exists(args.datasetDir))
     totalNumFrameTrue = len(glob.glob(args.datasetDir+"/config/*.json"))
-    assert(args.totalNumFrame == totalNumFrameTrue)
+    assert((args.totalNumFrame == totalNumFrameTrue) or (args.totalNumFrame == totalNumFrameTrue+len(consts.black_list_images)//4))
 
     max_idx = args.totalNumFrame # total data number: N*M'*4 = 6795*4*4 = 108720
     indices = np.asarray(range(max_idx))
