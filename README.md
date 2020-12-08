@@ -67,6 +67,11 @@ Please first activate the `opendrEnv` conda environment.
 	
 	conda activate opendrEnv
 
+Generate SMPL-to-IUV mappings. This is for rendering `smplIUV` from parametric SMPL models. You might need `pip install pathlib` and `pip install tqdm`.
+
+	cd Geo-PIFu/UVTextureConverter
+	python obtain_facesAtlas_Idx_U_V.py
+
 You can specify `splitNum` and `splitIdx` (e.g. {0, ..., `splitNum`-1}) in order to split the full data and launch multiple rendering scripts in parallel. For example, with 30 splits the whole rendering process will take about 37 hrs and generate 1.4T rendered data. The rendering script generates various items besides the color human images: `config`, `rgbImage`, `normalRGB`, `maskImage`, `meshVoxels`, `maskFromVoxels`, `meshSem`, `skeleton3D`, `skeleton2D`, `smplSem`, `smplIUV`, `smplSemVoxels`. Not all the items are needed/used in this project. But they could be very useful for other relevant tasks. Please read `render_mesh.py` for detailed explanation of each item and modify the rendering script accordingly to fit your need.
 
 	cd Geo-PIFu/
