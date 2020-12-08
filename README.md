@@ -38,7 +38,7 @@ We provide a conda `yml` environment file (you can modify `prefix` to change ins
 	conda env create -f geopifu_requirements.yml
 	conda activate geopifu
 
-We use `opendr` for mesh rendering. To accomodate its package requirements, we provide another conda `yml` environment file.
+We use `opendr` for mesh rendering. To accomodate its package requirements, we provide another conda `yml` environment file. If you have trouble with `yml` we also provide our installation commands log in `assests/create_opendrEnv.sh`.
 
 	conda env create -f opendr_requirements.yml
 	conda activate opendrEnv # plz make sure this works
