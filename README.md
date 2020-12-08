@@ -87,7 +87,7 @@ You can specify `splitNum` and `splitIdx` (e.g. {0, ..., `splitNum`-1}) in order
 	cd Geo-PIFu/
 	python render_mesh.py --meshDirSearch ${PREFERRED_DATA_FOLDER}/data --bgDirSearch ${PREFERRED_DATA_FOLDER}/data --saveDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resolutionScale 4 --splitNum 30 --splitIdx 0
 	python render_mesh.py --meshDirSearch ${PREFERRED_DATA_FOLDER}/data --bgDirSearch ${PREFERRED_DATA_FOLDER}/data --saveDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resolutionScale 4 --splitNum 30 --splitIdx 1
-	...
+	... # untill --splitIdx 29
 
 Instead of rendering the data on your own, we suggest using [the provided `config` files](https://www.dropbox.com/s/kxx87kyfuewhx0i/config_split_001_000.zip?dl=0) in order to obtain the same set of images used in our work `Geo-PIFu`. For each rendered image, we recorded its rendering settings like camera angles, lighting directions and so on in `json`.
 
@@ -97,7 +97,7 @@ We provide a demo script of parsing these recorded `json` rendering setting file
 
     python render_mesh.py --meshDirSearch ${PREFERRED_DATA_FOLDER}/data --bgDirSearch ${PREFERRED_DATA_FOLDER}/data --saveDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resolutionScale 4 --useConfig --addionalType smplSemVoxels --splitNum 30 --splitIdx 0
     python render_mesh.py --meshDirSearch ${PREFERRED_DATA_FOLDER}/data --bgDirSearch ${PREFERRED_DATA_FOLDER}/data --saveDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resolutionScale 4 --useConfig --addionalType smplSemVoxels --splitNum 30 --splitIdx 1
-    ...
+    ... # untill --splitIdx 29
 
 ## 4. Query Points Offline Sampling
 
@@ -112,7 +112,14 @@ You can specify `splitNum` and `splitIdx` (e.g. {0, ..., `splitNum`-1}) in order
 
 	python -m apps.prepare_shape_query --sampleType occu_sigma3.5_pts5k --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --epoch_range 0 15 --sigma 3.5 --num_sample_inout 5000 --num_sample_color 0 --splitNum 32 --splitIdx 0
     python -m apps.prepare_shape_query --sampleType occu_sigma3.5_pts5k --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --epoch_range 0 15 --sigma 3.5 --num_sample_inout 5000 --num_sample_color 0 --splitNum 32 --splitIdx 1
-    ...
+    ... # untill --splitIdx 31
+
+Move the sampled query points from {`./occu_sigma3.5_pts5k_split32_00`, ..., `./occu_sigma3.5_pts5k_split32_31`} into the target data folder `${PREFERRED_DATA_FOLDER}/data/humanRender/occu_sigma3.5_pts5k/`.
+
+	mkdir ${PREFERRED_DATA_FOLDER}/data/humanRender/occu_sigma3.5_pts5k
+	cd ./occu_sigma3.5_pts5k_split32_00/ && find . -name '*.npy' -print | zip ../occu_sigma3.5_pts5k_split32_00.zip -@ && mv ../occu_sigma3.5_pts5k_split32_00.zip ${PREFERRED_DATA_FOLDER}/data/humanRender/occu_sigma3.5_pts5k/ && rm *.npy
+    cd ./occu_sigma3.5_pts5k_split32_01/ && find . -name '*.npy' -print | zip ../occu_sigma3.5_pts5k_split32_01.zip -@ && mv ../occu_sigma3.5_pts5k_split32_01.zip ${PREFERRED_DATA_FOLDER}/data/humanRender/occu_sigma3.5_pts5k/ && rm *.npy
+    ... # untill occu_sigma3.5_pts5k_split32_31
 
 ## 5. Acknowledgements
 
