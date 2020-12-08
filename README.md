@@ -63,7 +63,7 @@ Parse the `lmdb` files into jpeg images. You might need to `pip install lmdb`.
 
 ## 3. Human Mesh Rendering
 
-Please first activate the `opendr` conda environment.
+Please first activate the `opendrEnv` conda environment.
 	
 	conda activate opendrEnv
 
