@@ -39,8 +39,9 @@ log = logging.getLogger('trimesh')
 log.setLevel(40)
 
 # global consts
-B_MIN = np.array([-consts.real_w/2., -consts.real_h/2., -consts.real_w/2.])
-B_MAX = np.array([ consts.real_w/2.,  consts.real_h/2.,  consts.real_w/2.])
+B_MIN           = np.array([-consts.real_w/2., -consts.real_h/2., -consts.real_w/2.])
+B_MAX           = np.array([ consts.real_w/2.,  consts.real_h/2.,  consts.real_w/2.])
+SENSEI_DATA_DIR = "/trainman-mount/trainman-storage-d5c0a121-bb5d-4afb-8020-c53f096d2a5c"
 
 def get_training_test_indices(args, shuffle):
 
@@ -185,7 +186,14 @@ def main(args):
 
         # only when it's a different mesh: load a mesh
         if dataConfig["meshPath"] != previousMeshPath:
-            mesh = trimesh.load(dataConfig["meshPath"])
+            print("\n\n\npath...")
+            pdb.set_trace()
+            meshPathTmp = dataConfig["meshPath"]
+            if SENSEI_DATA_DIR in meshPathTmp:
+                backward_offset = 2 + len(args.datasetDir.split('/')[-2]) + len(args.datasetDir.split('/')[-1])
+                meshPathTmp.replace(SENSEI_DATA_DIR, args.datasetDir[:-backward_offset])
+            assert(os.path.exists(meshPathTmp))
+            mesh   = trimesh.load(meshPathTmp)
             meshVN = copy.deepcopy(mesh.vertex_normals) 
             meshFN = copy.deepcopy(mesh.face_normals)   
             meshV  = copy.deepcopy(mesh.vertices)       # np.float64
