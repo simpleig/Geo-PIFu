@@ -49,6 +49,8 @@ We use `opendr` for mesh rendering. To accomodate its package requirements, we p
 Download the `DeepHuman` mesh dataset from [here](https://github.com/ZhengZerong/DeepHuman/tree/master/THUmanDataset) and move it into your preferred data folder. The downloaded data should be a zip file about 30.5 G.
 
 	mv DeepHumanDataset.zip data/DeepHumanDataset/
+	cd data/DeepHumanDataset
+	unzip DeepHumanDataset.zip
 
 Download the `LSUN` background image dataset and unzip the `zip` files.
 
