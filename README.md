@@ -18,7 +18,7 @@ If you find this code useful, please consider citing
 Development log
 - Environment configuration
   - [x] For `Geo-PIFu` and `PIFu` training, test and evaluation
-  - [ ] For `DeepHuman` data rendering
+  - [x] For `DeepHuman` data rendering using `opendr`
 - Data preparation
   - [x] DeepHuman and LSUN datasets setup
   - [ ] Clothed human mesh rendering
@@ -33,7 +33,7 @@ Development log
 
 ## Requirements
 
-We provide a conda `yaml` environment file. This conda env. is for `Geo-PIFu` and `PIFu` training, test and evaluation.
+We provide a conda `yaml` environment file (you can modify `prefix` to change installation location). This conda env. is for `Geo-PIFu` and `PIFu` training, test and evaluation.
 
 	conda env create -f geopifu_requirements.yaml
 	conda activate geopifu
@@ -41,8 +41,8 @@ We provide a conda `yaml` environment file. This conda env. is for `Geo-PIFu` an
 We use `opendr` for mesh rendering. To accomodate its package requirements, we provide another conda `yaml` environment file.
 
 	conda env create -f opendr_requirements.yaml
-	conda activate opendr # plz make sure this works
-	conda deactivate      # back to the geopifu env.
+	conda activate opendrEnv # plz make sure this works
+	conda deactivate         # back to the geopifu env.
 
 ## Dataset
 
