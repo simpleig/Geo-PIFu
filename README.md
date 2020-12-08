@@ -88,11 +88,12 @@ You can specify `splitNum` and `splitIdx` (e.g. {0, ..., `splitNum`-1}) in order
 	python render_mesh.py --meshDirSearch ${PREFERRED_DATA_FOLDER}/data --bgDirSearch ${PREFERRED_DATA_FOLDER}/data --saveDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resolutionScale 4 --splitNum 30 --splitIdx 1
 	...
 
-Instead of rendering the data on your own, we suggest using the provided `config` files in order to obtain the same set of images used in our work `Geo-PIFu`. For each rendered image, we recorded its rendering settings like camera angles, lighting directions and so on.
+Instead of rendering the data on your own, we suggest using [the provided `config` files](https://www.dropbox.com/s/kxx87kyfuewhx0i/config_split_001_000.zip?dl=0) in order to obtain the same set of images used in our work `Geo-PIFu`. For each rendered image, we recorded its rendering settings like camera angles, lighting directions and so on.
 
 	# download the saved rendering configuration files
+	unzip config_split_001_000.zip -d data/humanRender/config/ # should expect to see 108718 json files
 
-We provide a demo script of parsing these recorded rendering settings. You might need to make a few modifications in `render_mesh.py` in order to fully re-render our data for fair experiment comparisons. As an alternative, we want to directly provide a download link of our rendered data. But this requires some agreements with the `DeepHuman` dataset authors. We are working on it.
+We provide a demo script of parsing these recorded `json` rendering setting files. You might need to make a few modifications in `render_mesh.py` in order to fully re-render our data for fair experiment comparisons. As an alternative, we want to directly provide a download link of our rendered data. But this requires some agreements with the `DeepHuman` dataset authors. We are working on it.
 
     python render_mesh.py --meshDirSearch ${PREFERRED_DATA_FOLDER}/data --bgDirSearch ${PREFERRED_DATA_FOLDER}/data --saveDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resolutionScale 4 --useConfig --addionalType smplSemVoxels --splitNum 30 --splitIdx 0
     python render_mesh.py --meshDirSearch ${PREFERRED_DATA_FOLDER}/data --bgDirSearch ${PREFERRED_DATA_FOLDER}/data --saveDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resolutionScale 4 --useConfig --addionalType smplSemVoxels --splitNum 30 --splitIdx 1
