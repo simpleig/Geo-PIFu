@@ -137,7 +137,7 @@ Training script for the PIFu baseline using the rendered DeepHuman images.
 
 Download our pre-trained weights of the PIFu baseline.
 
-	...
+	mkdir Geo-PIFu/PIFu-master-new/checkpoints # move the downloaded PIFu_baseline.zip into this folder
 
 ## 5. Acknowledgements
 
