@@ -130,7 +130,7 @@ Unzip these `zip` files inside `${PREFERRED_DATA_FOLDER}/data/humanRender/occu_s
 
 ## 5. Training Scripts and Pre-trained Models
 
-Training script for the PIFu baseline using the rendered DeepHuman images.
+Training script for the PIFu baseline using the rendered DeepHuman images. If training goes properly, you should expect to see `Epoch-44 | eval  test MSE: 0.113815 IOU: 0.728298 prec: 0.849402 recall: 0.834104` and ` Epoch-44 | eval train MSE: 0.067872 IOU: 0.828301 prec: 0.889133 recall: 0.923424` at the end of the training.
 
 	conda activate geopifu && cd Geo-PIFu/PIFu-master-new
 	python -m apps.train_shape_iccv --gpu_ids 0,1,2,3,4,5 --name PIFu_baseline --sigma 3.5 --meshDirSearch ${PREFERRED_DATA_FOLDER}/data --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --random_multiview --num_views 1 --batch_size 36 --num_epoch 45 --schedule 8 23 40 --num_sample_inout 5000 --num_sample_color 0 --sampleType occu_sigma3.5_pts5k --freq_plot 1 --freq_save 888 --freq_save_ply 888 --z_size 200. --num_threads 8
