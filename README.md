@@ -135,9 +135,9 @@ Training script for the PIFu baseline using the rendered DeepHuman images.
 	conda activate geopifu && cd Geo-PIFu/PIFu-master-new
 	python -m apps.train_shape_iccv --gpu_ids 0,1,2,3,4,5 --name PIFu_baseline --sigma 3.5 --meshDirSearch ${PREFERRED_DATA_FOLDER}/data --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --random_multiview --num_views 1 --batch_size 36 --num_epoch 45 --schedule 8 23 40 --num_sample_inout 5000 --num_sample_color 0 --sampleType occu_sigma3.5_pts5k --freq_plot 1 --freq_save 888 --freq_save_ply 888 --z_size 200. --num_threads 8
 
-Download our pre-trained weights of the PIFu baseline.
+Download [our pre-trained weights of the PIFu baseline](https://www.dropbox.com/s/bc9du1zd2p2cqw8/netG_epoch_44_2415?dl=0).
 
-	mkdir Geo-PIFu/PIFu-master-new/checkpoints # move the downloaded PIFu_baseline.zip into this folder
+	mkdir Geo-PIFu/PIFu-master-new/checkpoints/PIFu_baseline # move the downloaded weights into this folder
 
 ## 5. Acknowledgements
 
