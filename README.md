@@ -104,7 +104,7 @@ We provide a demo script of parsing these recorded `json` rendering setting file
 Please first activate the `geopifu` conda environment.
 
 	conda activate geopifu
-	cd Geo-PIFu/PIFu-master-new
+	cd Geo-PIFu/geopifu
 
 Prepare and save shape training query samples offline, because `--online_sampling` of `train_shape_iccv.py` is slow due to mesh reading, point sampling, ray tracing, etc. This query points offline sampling process only need to be done once. The sampled / saved query points can be used for both `PIFu` and `Geo-PIFu` training.
 
@@ -132,12 +132,12 @@ Unzip these `zip` files inside `${PREFERRED_DATA_FOLDER}/data/humanRender/occu_s
 
 Training script for the `PIFu` baseline using the rendered DeepHuman images. If training goes properly, you should expect to see `Epoch-44 | eval  test MSE: 0.113815 IOU: 0.728298 prec: 0.849402 recall: 0.834104` and `Epoch-44 | eval train MSE: 0.067872 IOU: 0.828301 prec: 0.889133 recall: 0.923424` at the end of the training.
 
-	conda activate geopifu && cd Geo-PIFu/PIFu-master-new
+	conda activate geopifu && cd Geo-PIFu/geopifu
 	python -m apps.train_shape_iccv --gpu_ids 0,1,2,3,4,5 --name PIFu_baseline --sigma 3.5 --meshDirSearch ${PREFERRED_DATA_FOLDER}/data --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --random_multiview --num_views 1 --batch_size 36 --num_epoch 45 --schedule 8 23 40 --num_sample_inout 5000 --num_sample_color 0 --sampleType occu_sigma3.5_pts5k --freq_plot 1 --freq_save 888 --freq_save_ply 888 --z_size 200. --num_threads 8 # ~ 1 day
 
 Download [our pre-trained weights of the PIFu baseline](https://www.dropbox.com/s/bc9du1zd2p2cqw8/netG_epoch_44_2415?dl=0) into the folder created below.
 
-	mkdir Geo-PIFu/PIFu-master-new/checkpoints/PIFu_baseline # move the downloaded weights into this folder
+	mkdir Geo-PIFu/geopifu/checkpoints/PIFu_baseline # move the downloaded weights into this folder
 
 Training scripts for `Geo-PIFu`. We adopt a staged training scheme of the coarse occupancy volume loss and the high-resolution query point loss. The second script below is to prepare aligned-latent-voxels for learning the final implicit function. You can modify `--deepVoxels_fusion` in the third script to play with different fusion schemes of the latent geometry and pixel features. By default we adopt early fusion, as explained in the paper.
 
