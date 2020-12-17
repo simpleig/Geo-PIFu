@@ -128,7 +128,7 @@ Unzip these `zip` files inside `${PREFERRED_DATA_FOLDER}/data/humanRender/occu_s
 	unzip occu_sigma3.5_pts5k_split32_01.zip && rm occu_sigma3.5_pts5k_split32_01.zip
 	... # until occu_sigma3.5_pts5k_split32_31
 
-## 5. Training and Pre-trained Models
+## 5. Training Scripts and Pre-trained Models
 
 Training script for the PIFu baseline using the rendered DeepHuman images.
 
