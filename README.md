@@ -135,15 +135,20 @@ Training script for the `PIFu` baseline using the rendered DeepHuman images. If 
 	conda activate geopifu && cd Geo-PIFu/geopifu
 	python -m apps.train_shape_iccv --gpu_ids 0,1,2,3,4,5 --name PIFu_baseline --sigma 3.5 --meshDirSearch ${PREFERRED_DATA_FOLDER}/data --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --random_multiview --num_views 1 --batch_size 36 --num_epoch 45 --schedule 8 23 40 --num_sample_inout 5000 --num_sample_color 0 --sampleType occu_sigma3.5_pts5k --freq_plot 1 --freq_save 888 --freq_save_ply 888 --z_size 200. --num_threads 8 # ~ 1 day
 
-Download [our pre-trained weights of the PIFu baseline](https://www.dropbox.com/s/bc9du1zd2p2cqw8/netG_epoch_44_2415?dl=0) into the folder created below.
+Download [our pre-trained weights of the `PIFu` baseline](https://www.dropbox.com/s/bc9du1zd2p2cqw8/netG_epoch_44_2415?dl=0) into the folder created below.
 
-	mkdir Geo-PIFu/geopifu/checkpoints/PIFu_baseline # move the downloaded weights into this folder
+	mkdir Geo-PIFu/geopifu/checkpoints/PIFu_baseline # move the downloaded netG_epoch_44_2415 into this folder
 
 Training scripts for `Geo-PIFu`. We adopt a staged training scheme of the coarse occupancy volume loss and the high-resolution query point loss. The second script below is to prepare aligned-latent-voxels for learning the final implicit function. You can modify `--deepVoxels_fusion` in the third script to play with different fusion schemes of the latent geometry and pixel features. By default we adopt early fusion, as explained in the paper.
 
     python -m apps.train_shape_coarse --gpu_ids 0,1,2,3,4,5 --name GeoPIFu_coarse --meshDirSearch ${PREFERRED_DATA_FOLDER}/data --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --random_multiview --num_views 1 --batch_size 30 --num_epoch 30 --schedule 8 23 --freq_plot 1 --freq_save 970 --freq_save_ply 970 --num_threads 8 --num_sample_inout 0 --num_sample_color 0 --load_single_view_meshVoxels --vrn_occupancy_loss_type ce --weight_occu 1000.0 # ~ 2 days
     python -m apps.test_shape_coarse --resultsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/GeoPIFu_coarse/train --splitNum 1 --splitIdx 0 --gpu_id 0 --load_netV_checkpoint_path ./checkpoints/GeoPIFu_coarse/netV_epoch_29_2899 --load_from_multi_GPU_shape --dataType train --batch_size 1 # ~ 12 hrs, you can modify "splitNum" and "splitIdx" as used before for great speedup 
 	python -m apps.train_query --gpu_ids 0,1,2,3,4,5 --name GeoPIFu_query --sigma 3.5 --meshDirSearch ${PREFERRED_DATA_FOLDER}/data --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --deepVoxelsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/GeoPIFu_coarse/train --random_multiview --num_views 1 --batch_size 36 --num_epoch 45 --schedule 8 23 40 --num_sample_inout 5000 --num_sample_color 0 --sampleType occu_sigma3.5_pts5k --freq_plot 1 --freq_save 888 --freq_save_ply 888 --z_size 200. --num_threads 8 --deepVoxels_fusion early --deepVoxels_c_len 56 --multiRanges_deepVoxels # ~ 1 day
+
+Download [our pre-trained weights of `Geo-PIFu`](XXX). Unzip the downloaded `geopifu_weights.zip` and put the weights into the two folders created below.
+
+	mkdir Geo-PIFu/geopifu/checkpoints/GeoPIFu_coarse # move netV_epoch_29_2899 here
+	mkdir Geo-PIFu/geopifu/checkpoints/GeoPIFu_query  # move XXX here
 
 ## 5. Acknowledgements
 
