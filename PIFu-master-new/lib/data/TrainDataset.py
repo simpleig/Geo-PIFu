@@ -16,6 +16,7 @@ import sys
 import json
 import copy
 
+SENSEI_DATA_DIR          = "/trainman-mount/trainman-storage-d5c0a121-bb5d-4afb-8020-c53f096d2a5c"
 this_file_path_abs       = os.path.dirname(__file__)
 target_dir_path_relative = os.path.join(this_file_path_abs, '../../..')
 target_dir_path_abs      = os.path.abspath(target_dir_path_relative)
@@ -24,7 +25,6 @@ from Constants import consts
 
 log = logging.getLogger('trimesh')
 log.setLevel(40)
-
 
 def load_trimesh(root_dir):
     """
@@ -592,7 +592,13 @@ class TrainDatasetICCV(Dataset):
     def select_sampling_method_iccv_online(self,dataConfig):
         
         # read mesh
-        mesh = trimesh.load(dataConfig["meshPath"])
+        # mesh = trimesh.load(dataConfig["meshPath"])
+        meshPathTmp = dataConfig["meshPath"]
+        if SENSEI_DATA_DIR in meshPathTmp:
+            backward_offset = 2 + len(args.datasetDir.split('/')[-2]) + len(args.datasetDir.split('/')[-1])
+            meshPathTmp     = meshPathTmp.replace(SENSEI_DATA_DIR, args.datasetDir[:-backward_offset])
+        assert(os.path.exists(meshPathTmp))
+        mesh = trimesh.load(meshPathTmp)
 
         # normalize into volumes of X~[+-0.333], Y~[+-0.5], Z~[+-0.333]
         randomRot           = np.array(dataConfig["randomRot"], np.float32) # by random R
