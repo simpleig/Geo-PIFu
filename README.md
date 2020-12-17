@@ -24,7 +24,7 @@ Development log
   - [x] Clothed human mesh rendering and voxelization
 - Training
   - [x] Mesh query points offline sampling for fast and controled training
-  - [ ] Train `PIFu` on the DeepHuman training dataset
+  - [x] Train `PIFu` on the DeepHuman training dataset
   - [ ] Train `Geo-PIFu` on the DeepHuman training dataset
 - Test
   - [ ] Test `PIFu` on the DeepHuman test dataset
