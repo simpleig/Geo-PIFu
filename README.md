@@ -27,7 +27,7 @@ Development log
   - [x] Train `PIFu` on the DeepHuman training dataset
   - [x] Train `Geo-PIFu` on the DeepHuman training dataset
 - Test
-  - [ ] Test `PIFu` on the DeepHuman test dataset
+  - [x] Test `PIFu` on the DeepHuman test dataset
   - [x] Test `Geo-PIFu` on the DeepHuman test dataset
 - Evaulation
   - [ ] Compute 4 metrics: CD, PSD, Normal Cosine, Normal L2
@@ -154,9 +154,17 @@ Download [our pre-trained weights of `Geo-PIFu`](https://www.dropbox.com/s/yln7b
 
 Test the models on the rendered 21744 DeepHuman test images. The test dataset is quite large and therefore you need at least 85 G to save the generated human meshes, which would be used for computing the evaluation metrics later. You can specify `splitNum` and `splitIdx` (e.g. {0, ..., `splitNum`-1}) in order to split the full data and launch multiple test scripts in parallel. For example, with 7 splits the whole inference process will take about 3 hrs.
 
+The scripts below are for `Geo-PIFu`.
+
     CUDA_VISIBLE_DEVICES=0 python -m apps.test_shape_iccv --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resultsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/GeoPIFu_query --deepVoxelsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/GeoPIFu_coarse/train --deepVoxels_fusion early --deepVoxels_c_len 56 --multiRanges_deepVoxels --splitNum 7 --splitIdx 0 --gpu_id 0 --load_netG_checkpoint_path ./checkpoints/GeoPIFu_query/netG_epoch_44_2415 --load_from_multi_GPU_shape
     CUDA_VISIBLE_DEVICES=1 python -m apps.test_shape_iccv --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resultsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/GeoPIFu_query --deepVoxelsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/GeoPIFu_coarse/train --deepVoxels_fusion early --deepVoxels_c_len 56 --multiRanges_deepVoxels --splitNum 7 --splitIdx 1 --gpu_id 0 --load_netG_checkpoint_path ./checkpoints/GeoPIFu_query/netG_epoch_44_2415 --load_from_multi_GPU_shape    
     ... # until --splitIdx 6
+
+The scripts below are for `PIFu`.
+
+    CUDA_VISIBLE_DEVICES=0 python -m apps.test_shape_iccv --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resultsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/PIFu_baseline --splitNum 7 --splitIdx 0 --gpu_id 0 --load_netG_checkpoint_path ./checkpoints/PIFu_baseline/netG_epoch_44_2415 --load_from_multi_GPU_shape 
+    CUDA_VISIBLE_DEVICES=1 python -m apps.test_shape_iccv --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resultsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/PIFu_baseline --splitNum 7 --splitIdx 1 --gpu_id 0 --load_netG_checkpoint_path ./checkpoints/PIFu_baseline/netG_epoch_44_2415 --load_from_multi_GPU_shape
+    ... until --splitIdx 6
 
 ## 7. Acknowledgements
 
