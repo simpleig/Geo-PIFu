@@ -22,7 +22,7 @@ Development log
 - Data preparation
   - [x] DeepHuman and LSUN datasets setup
   - [x] Clothed human mesh rendering and voxelization
-- Training
+- Training and pre-trained models
   - [x] Mesh query points offline sampling for fast and controled training
   - [x] Train `PIFu` on the DeepHuman training dataset
   - [x] Train `Geo-PIFu` on the DeepHuman training dataset
