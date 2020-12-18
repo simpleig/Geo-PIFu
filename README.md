@@ -150,6 +150,6 @@ Download [our pre-trained weights of `Geo-PIFu`](https://www.dropbox.com/s/yln7b
 	mkdir Geo-PIFu/geopifu/checkpoints/GeoPIFu_coarse # move netV_epoch_29_2899 here
 	mkdir Geo-PIFu/geopifu/checkpoints/GeoPIFu_query  # move netG_epoch_44_2415 here
 
-## 5. Acknowledgements
+## 6. Acknowledgements
 
 This repository is built on: [DeepHuman](https://github.com/ZhengZerong/DeepHuman) and [PIFu](https://github.com/shunsukesaito/PIFu). Thank the authors for sharing their code!
