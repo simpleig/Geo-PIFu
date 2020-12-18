@@ -431,7 +431,7 @@ def main(args):
         if not args.only_compute_additional_metrics:
 
             normal_errors = compute_n_save_normal_erros(args=args,estMeshPath=meshPath,rn=rn,preFix=frameIdx[1],estMesh=estMesh)
-            assert(normal_errors.shape[0] == 1 and normal_errors.shape[1] == 2)
+            assert(len(normal_errors) == 1 and len(normal_errors[0]) == 2)
 
         # ----- save the eval metrics into .json of args.resultsDir dir -----
         if not args.only_compute_additional_metrics:
