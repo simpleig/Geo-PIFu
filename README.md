@@ -28,7 +28,7 @@ Development log
   - [x] Train `Geo-PIFu` on the DeepHuman training dataset
 - Test
   - [ ] Test `PIFu` on the DeepHuman test dataset
-  - [ ] Test `Geo-PIFu` on the DeepHuman test dataset
+  - [x] Test `Geo-PIFu` on the DeepHuman test dataset
 - Evaulation
   - [ ] Compute 4 metrics: CD, PSD, Normal Cosine, Normal L2
 
@@ -142,13 +142,21 @@ Download [our pre-trained weights of the `PIFu` baseline](https://www.dropbox.co
 Training scripts for `Geo-PIFu`. We adopt a staged training scheme of the coarse occupancy volume loss and the high-resolution query point loss. The second script below is to prepare aligned-latent-voxels for learning the final implicit function. You can modify `--deepVoxels_fusion` in the third script to play with different fusion schemes of the latent geometry and pixel features. By default we adopt early fusion, as explained in the paper.
 
     python -m apps.train_shape_coarse --gpu_ids 0,1,2,3,4,5 --name GeoPIFu_coarse --meshDirSearch ${PREFERRED_DATA_FOLDER}/data --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --random_multiview --num_views 1 --batch_size 30 --num_epoch 30 --schedule 8 23 --freq_plot 1 --freq_save 970 --freq_save_ply 970 --num_threads 8 --num_sample_inout 0 --num_sample_color 0 --load_single_view_meshVoxels --vrn_occupancy_loss_type ce --weight_occu 1000.0 # ~ 2 days
-    python -m apps.test_shape_coarse --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resultsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/GeoPIFu_coarse/train --splitNum 1 --splitIdx 0 --gpu_id 0 --load_netV_checkpoint_path ./checkpoints/GeoPIFu_coarse/netV_epoch_29_2899 --load_from_multi_GPU_shape --dataType train --batch_size 1 # ~ 3 hrs, you can modify "splitNum" and "splitIdx" as used before for even more speedup
-	python -m apps.train_query --gpu_ids 0,1,2,3,4,5 --name GeoPIFu_query --sigma 3.5 --meshDirSearch ${PREFERRED_DATA_FOLDER}/data --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --deepVoxelsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/GeoPIFu_coarse/train --random_multiview --num_views 1 --batch_size 36 --num_epoch 45 --schedule 8 23 40 --num_sample_inout 5000 --num_sample_color 0 --sampleType occu_sigma3.5_pts5k --freq_plot 1 --freq_save 888 --freq_save_ply 888 --z_size 200. --num_threads 8 --deepVoxels_fusion early --deepVoxels_c_len 56 --multiRanges_deepVoxels # ~ 1 day
+    python -m apps.test_shape_coarse --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resultsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geogeopifuResults/GeoPIFu_coarse/train --splitNum 1 --splitIdx 0 --gpu_id 0 --load_netV_checkpoint_path ./checkpoints/GeoPIFu_coarse/netV_epoch_29_2899 --load_from_multi_GPU_shape --dataType train --batch_size 1 # ~ 3 hrs, you can modify "splitNum" and "splitIdx" as used before for even more speedup
+	python -m apps.train_query --gpu_ids 0,1,2,3,4,5 --name GeoPIFu_query --sigma 3.5 --meshDirSearch ${PREFERRED_DATA_FOLDER}/data --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --deepVoxelsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geogeopifuResults/GeoPIFu_coarse/train --random_multiview --num_views 1 --batch_size 36 --num_epoch 45 --schedule 8 23 40 --num_sample_inout 5000 --num_sample_color 0 --sampleType occu_sigma3.5_pts5k --freq_plot 1 --freq_save 888 --freq_save_ply 888 --z_size 200. --num_threads 8 --deepVoxels_fusion early --deepVoxels_c_len 56 --multiRanges_deepVoxels # ~ 1 day
 
 Download [our pre-trained weights of `Geo-PIFu`](https://www.dropbox.com/s/yln7blfxodhmbxh/geopifu_weights.zip?dl=0). Unzip the downloaded `geopifu_weights.zip` and put the weights into the two folders created below.
 
 	mkdir Geo-PIFu/geopifu/checkpoints/GeoPIFu_coarse # move netV_epoch_29_2899 here
 	mkdir Geo-PIFu/geopifu/checkpoints/GeoPIFu_query  # move netG_epoch_44_2415 here
+
+## 6. Test Scripts
+
+Test the models on the rendered 21744 DeepHuman test images. The test dataset is quite large and therefore you need at least 85 G to save the generated human meshes, which would be used for computing the evaluation metrics later. You can specify `splitNum` and `splitIdx` (e.g. {0, ..., `splitNum`-1}) in order to split the full data and launch multiple test scripts in parallel. For example, with 7 splits the whole inference process will take about 3 hrs.
+
+    CUDA_VISIBLE_DEVICES=0 python -m apps.test_shape_iccv --resultsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/GeoPIFu_query --deepVoxelsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/GeoPIFu_coarse/train --deepVoxels_fusion early --deepVoxels_c_len 56 --multiRanges_deepVoxels --splitNum 7 --splitIdx 0 --gpu_id 0 --load_netG_checkpoint_path ./checkpoints/GeoPIFu_query/netG_epoch_44_2415 --load_from_multi_GPU_shape
+    CUDA_VISIBLE_DEVICES=1 python -m apps.test_shape_iccv --resultsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/GeoPIFu_query --deepVoxelsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/GeoPIFu_coarse/train --deepVoxels_fusion early --deepVoxels_c_len 56 --multiRanges_deepVoxels --splitNum 7 --splitIdx 1 --gpu_id 0 --load_netG_checkpoint_path ./checkpoints/GeoPIFu_query/netG_epoch_44_2415 --load_from_multi_GPU_shape    
+    ... # until --splitIdx 6
 
 ## 6. Acknowledgements
 
