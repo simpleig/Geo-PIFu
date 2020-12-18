@@ -178,6 +178,7 @@ The scripts below are for `Geo-PIFu`. You can specify `splitNum` and `splitIdx` 
 	CUDA_VISIBLE_DEVICES=0 python main_eval_prepare_iccv.py --compute_vn --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resultsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/GeoPIFu_query --splitNum 28 --splitIdx 0
     CUDA_VISIBLE_DEVICES=1 python main_eval_prepare_iccv.py --compute_vn --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resultsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/GeoPIFu_query --splitNum 28 --splitIdx 1
     ... # until --splitIdx 27
+    python main_eval_metrics_iccv.py --resultsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/GeoPIFu_query # {'avg_norm_cos_dis_front': 0.06824304946997152, 'avg_norm_l2_dis_front': 0.26032118629703593, 'avg_estV_2_gtM_dis': 1.9223167808654273, 'avg_chamfer_dis': 1.74238152194499}
 
 The scripts below are for `PIFu`.
 
