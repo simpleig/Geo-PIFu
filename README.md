@@ -164,8 +164,23 @@ The scripts below are for `PIFu`.
 
     CUDA_VISIBLE_DEVICES=0 python -m apps.test_shape_iccv --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resultsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/PIFu_baseline --splitNum 7 --splitIdx 0 --gpu_id 0 --load_netG_checkpoint_path ./checkpoints/PIFu_baseline/netG_epoch_44_2415 --load_from_multi_GPU_shape 
     CUDA_VISIBLE_DEVICES=1 python -m apps.test_shape_iccv --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resultsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/PIFu_baseline --splitNum 7 --splitIdx 1 --gpu_id 0 --load_netG_checkpoint_path ./checkpoints/PIFu_baseline/netG_epoch_44_2415 --load_from_multi_GPU_shape
-    ... until --splitIdx 6
+    ... # until --splitIdx 6
 
-## 7. Acknowledgements
+## 7. Evaluation Metrics
+
+Compute Chamfer Distance, Point-to-Surface Distance, and Cosine/L2 Normal Distances. Please first activate the `opendrEnv` conda environment, because we need to render normal maps using `opendr`.
+
+	conda activate opendrEnv
+	cd Geo-PIFu/
+
+The scripts below are for `Geo-PIFu`. You can specify `splitNum` and `splitIdx` (e.g. {0, ..., `splitNum`-1}) in order to split the full data and launch multiple evaluation scripts in parallel. For example, with 28 splits the whole inference process will take about 4 hrs.
+
+	CUDA_VISIBLE_DEVICES=0 python main_eval_prepare_iccv.py --compute_vn --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resultsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/GeoPIFu_query --splitNum 28 --splitIdx 0
+    CUDA_VISIBLE_DEVICES=1 python main_eval_prepare_iccv.py --compute_vn --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resultsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/GeoPIFu_query --splitNum 28 --splitIdx 1
+    ... # until --splitIdx 27
+
+The scripts below are for `PIFu`.
+
+## 8. Acknowledgements
 
 This repository is built on: [DeepHuman](https://github.com/ZhengZerong/DeepHuman) and [PIFu](https://github.com/shunsukesaito/PIFu). Thank the authors for sharing their code!
