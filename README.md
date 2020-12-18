@@ -158,6 +158,6 @@ Test the models on the rendered 21744 DeepHuman test images. The test dataset is
     CUDA_VISIBLE_DEVICES=1 python -m apps.test_shape_iccv --resultsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/GeoPIFu_query --deepVoxelsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/GeoPIFu_coarse/train --deepVoxels_fusion early --deepVoxels_c_len 56 --multiRanges_deepVoxels --splitNum 7 --splitIdx 1 --gpu_id 0 --load_netG_checkpoint_path ./checkpoints/GeoPIFu_query/netG_epoch_44_2415 --load_from_multi_GPU_shape    
     ... # until --splitIdx 6
 
-## 6. Acknowledgements
+## 7. Acknowledgements
 
 This repository is built on: [DeepHuman](https://github.com/ZhengZerong/DeepHuman) and [PIFu](https://github.com/shunsukesaito/PIFu). Thank the authors for sharing their code!
