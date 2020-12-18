@@ -173,7 +173,7 @@ Compute Chamfer Distance, Point-to-Surface Distance, and Cosine/L2 Normal Distan
 	conda activate opendrEnv
 	cd Geo-PIFu/
 
-The scripts below are for `Geo-PIFu`. You can specify `splitNum` and `splitIdx` (e.g. {0, ..., `splitNum`-1}) in order to split the full data and launch multiple evaluation scripts in parallel. For example, with 28 splits the whole inference process will take about 4 hrs.
+The scripts below are for `Geo-PIFu`. You can specify `splitNum` and `splitIdx` (e.g. {0, ..., `splitNum`-1}) in order to split the full data and launch multiple evaluation scripts in parallel. For example, with 28 splits the whole inference process will take about 1 hrs.
 
 	CUDA_VISIBLE_DEVICES=0 python main_eval_prepare_iccv.py --compute_vn --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resultsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/GeoPIFu_query --splitNum 28 --splitIdx 0
     CUDA_VISIBLE_DEVICES=1 python main_eval_prepare_iccv.py --compute_vn --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resultsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/GeoPIFu_query --splitNum 28 --splitIdx 1

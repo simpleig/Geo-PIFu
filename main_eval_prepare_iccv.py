@@ -17,7 +17,7 @@ import DataUtil.CommonUtil as util
 import torch
 import sys
 this_file_path_abs       = os.path.dirname(__file__)
-target_dir_path_relative = os.path.join(this_file_path_abs, 'pyTorchChamferDistance-master/chamfer_distance')
+target_dir_path_relative = os.path.join(this_file_path_abs, 'pyTorchChamferDistance/chamfer_distance')
 target_dir_path_abs      = os.path.abspath(target_dir_path_relative)
 sys.path.insert(0, target_dir_path_abs)
 from chamfer_distance import ChamferDistance # https://github.com/chrdiller/pyTorchChamferDistance
