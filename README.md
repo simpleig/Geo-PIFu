@@ -148,7 +148,7 @@ Training scripts for `Geo-PIFu`. We adopt a staged training scheme of the coarse
 Download [our pre-trained weights of `Geo-PIFu`](XXX). Unzip the downloaded `geopifu_weights.zip` and put the weights into the two folders created below.
 
 	mkdir Geo-PIFu/geopifu/checkpoints/GeoPIFu_coarse # move netV_epoch_29_2899 here
-	mkdir Geo-PIFu/geopifu/checkpoints/GeoPIFu_query  # move XXX here
+	mkdir Geo-PIFu/geopifu/checkpoints/GeoPIFu_query  # move netG_epoch_44_2415 here
 
 ## 5. Acknowledgements
 
