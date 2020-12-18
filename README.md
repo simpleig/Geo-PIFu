@@ -168,7 +168,14 @@ The scripts below are for `PIFu`.
 
 ## 7. Evaluation Metrics
 
-Compute Chamfer Distance, Point-to-Surface Distance, and Cosine/L2 Normal Distances. Please first activate the `opendrEnv` conda environment, because we need to render normal maps using `opendr`.
+Benchmarks. To evaluate global topology accuracy of meshes, we report Chamfer Distance (x 10000) and Point-to-Surface Distance (x 10000) between the reconstructed human mesh and the ground truth mesh. We also compute Cosine and *L2* distances for the input view normals to measure fine-scale surface details, such as clothes wrinkles. Small values indicate good performance.
+|          |   CD  |  PSD  | Cosine |   *L2*   |
+|:--------:|:-----:|:-----:|:------:|:------:|
+| DeepHuman     | 11.928 | 11.246 | 0.2088 | 0.4647 |
+| PIFu     | 2.604 | 4.026 | 0.0914 | 0.3009 |
+| Geo-PIFu | **1.742** | **1.922** | **0.0682** | **0.2603** |
+
+Please first activate the `opendrEnv` conda environment, because we need to render normal maps using `opendr`.
 
 	conda activate opendrEnv
 	cd Geo-PIFu/
@@ -181,6 +188,11 @@ The scripts below are for `Geo-PIFu`. You can specify `splitNum` and `splitIdx` 
     python main_eval_metrics_iccv.py --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resultsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/GeoPIFu_query # {'avg_norm_cos_dis_front': 0.06824304946997152, 'avg_norm_l2_dis_front': 0.26032118629703593, 'avg_estV_2_gtM_dis': 1.9223167808654273, 'avg_chamfer_dis': 1.74238152194499}
 
 The scripts below are for `PIFu`.
+
+    CUDA_VISIBLE_DEVICES=0 python main_eval_prepare_iccv.py --compute_vn --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resultsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/PIFu_baseline --splitNum 28 --splitIdx 0
+    CUDA_VISIBLE_DEVICES=1 python main_eval_prepare_iccv.py --compute_vn --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resultsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/PIFu_baseline --splitNum 28 --splitIdx 1    
+    ... # until --splitIdx 27
+	python main_eval_metrics_iccv.py --datasetDir ${PREFERRED_DATA_FOLDER}/data/humanRender --resultsDir ${PREFERRED_DATA_FOLDER}/data/humanRender/geopifuResults/PIFu_baseline # {'avg_norm_cos_dis_front': 0.09137490149626801, 'avg_norm_l2_dis_front': 0.30085176164504523, 'avg_estV_2_gtM_dis': 4.025693249805427, 'avg_chamfer_dis': 2.6042173518056}
 
 ## 8. Acknowledgements
 
